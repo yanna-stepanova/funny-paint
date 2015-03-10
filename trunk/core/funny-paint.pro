@@ -1,13 +1,20 @@
+
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = funny-paint
+TEMPLATE = app
+
 HEADERS += \
-    mainwindow.h \
-    headers/mainwindow.h
+    headers/cr_mainwindow.h
 
 SOURCES += \
-    mainwindow.cpp \
-    sources/mainwindow.cpp
+    sources/cr_mainwindow.cpp \
+    sources/cr_main.cpp
 
 RESOURCES += \
     ../resources/icon-sources.qrc
 
 FORMS += \
-    mainwindow.ui
+    cr_mainwindow.ui
