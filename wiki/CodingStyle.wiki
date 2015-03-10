@@ -5,5 +5,9 @@
 
  * All variables, classes, structures, etc, should name without abbreviations:
 
-|| m_isUserCreated || Correct ||
-|| m_usrCrtd       || Wrong   ||
+<table cellspacing=2 border=0>
+<tbody>
+<tr bgcolor="red"><td ><code>bool m_isUserCreated;</code></td><td><font color="green">*Correct*</font></td></tr>
+<tr><td><code>bool m_usrCrtd;</code></td><td><font color="red">*Wrong*</font></td></tr>
+</tbody>
+</table>
