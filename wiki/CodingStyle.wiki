@@ -1,0 +1,9 @@
+#labels CodingStyle,C,Formating
+<wiki:toc max_depth="2" />
+
+= Naming =
+
+ * All variables, classes, structures, etc, should name without abbreviations:
+
+|| m_isUserCreated || Correct ||
+|| m_usrCrtd       || Wrong   ||
