@@ -16,7 +16,9 @@
 <table width="100%" cellspacing=0 border=1>
 <thead><th>Name</th><th>Example</th></thead>
 <tbody>
-<tr><td>Namespace</td><td><code>namespace Gui {}</code></td></tr>
+<tr><td>Namespace</td><td><code>namespace Gui {
+    // Some code
+} // namespace Gui</code></td></tr>
 <tr><td>Class/Structure/Union</td><td><code>class Variable;
 struct Rich;</code></td></tr>
 <tr><td>Enum</td><td><code>enum Tool
