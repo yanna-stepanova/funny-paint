@@ -5,9 +5,31 @@
 
  * All variables, classes, structures, etc, should name without abbreviations:
 
-<table cellspacing=2 border=0>
+<table cellpadding=0 cellspacing=0 border=1>
 <tbody>
 <tr bgcolor="red"><td ><code>bool m_isUserCreated;</code></td><td><font color="green">*Correct*</font></td></tr>
 <tr><td><code>bool m_usrCrtd;</code></td><td><font color="red">*Wrong*</font></td></tr>
+</tbody>
+</table>
+ * Base types:
+
+<table width="100%" cellspacing=0 border=1>
+<thead><th>Name</th><th>Example</th></thead>
+<tbody>
+<tr><td>Namespace</td><td><code>namespace Gui {}</code></td></tr>
+<tr><td>Class/Structure/Union</td><td><code>class Variable;
+struct Rich;</code></td></tr>
+<tr><td>Enum</td><td><code>enum Tool
+{
+        Line
+    ,   Brush
+};</code></td></tr>
+<tr><td>Method/Function</td><td><code>void displayLine();</code></td></tr>
+<tr><td>Local variable</td><td><code>int lineSize;</code></td></tr>
+<tr><td>Static variable</td><td><code>int s_lineSize;</code> or <code>int ms_lineSize;</code></td></tr>
+<tr><td>Class member</td><td><code>int m_lineSize;</code></td></tr>
+<tr><td>Global variable</td><td><code>int g_lineSize;</code></td></tr>
+<tr><td>Function or method parameter</td><td><code>int _lineSize;</code></td></tr>
+<tr><td>Macros</td><td><code>#define INTERNAL_CHECK</code></td></tr>
 </tbody>
 </table>
