@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QtCore>
 
 namespace Ui {
     class MainWindow;
@@ -12,23 +13,23 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
  public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *_parent = 0);
     virtual ~MainWindow();
-    void draw(QPainter *_painter);
-
+    void setPoint(const QPoint &_point);
 
  signals:
 
  public slots:
 
- private:
-    Ui::MainWindow *ui;
-    int m_x,m_y;
-
  protected:
-    void mousePressEvent(QMouseEvent *_event);
-    void mouseMoveEvent(QMouseEvent *_event);
-    void paintEvent(QPainter *_event);
+    /*virtual*/ void mousePressEvent(QMouseEvent *_event);
+    /*virtual*/ void mouseMoveEvent(QMouseEvent *_event);
+    /*virtual*/ void paintEvent(QPaintEvent * /*event*/);
+
+private:
+   Ui::MainWindow *ui;
+   QSet<QPoint> *m_points;
+   QSet<QPoint>::const_iterator m_iter;
 };
 
 #endif // MAINWINDOW_H
