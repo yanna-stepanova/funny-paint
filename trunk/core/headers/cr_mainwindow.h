@@ -2,34 +2,32 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtGui>
-#include <QtCore>
+
+#include "headers/cr_class_set.h"
 
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
- public:
+public:
     explicit MainWindow(QWidget *_parent = 0);
     virtual ~MainWindow();
-    void setPoint(const QPoint &_point);
 
- signals:
+signals:
 
- public slots:
+public slots:
 
- protected:
+protected:
     /*virtual*/ void mousePressEvent(QMouseEvent *_event);
     /*virtual*/ void mouseMoveEvent(QMouseEvent *_event);
     /*virtual*/ void paintEvent(QPaintEvent * /*event*/);
 
 private:
-   Ui::MainWindow *ui;
-   QSet<QPoint> *m_points;
-   QSet<QPoint>::const_iterator m_iter;
+    Ui::MainWindow *m_ui;
+    SetPoints m_setPoints;
 };
 
 #endif // MAINWINDOW_H

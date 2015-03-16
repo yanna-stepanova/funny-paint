@@ -7,11 +7,14 @@ TARGET = funny-paint
 TEMPLATE = app
 
 HEADERS += \
-    headers/cr_mainwindow.h
+    headers/cr_mainwindow.h \
+    headers/cr_hash.h \
+    headers/cr_class_set.h
 
 SOURCES += \
     sources/cr_mainwindow.cpp \
-    sources/cr_main.cpp
+    sources/cr_main.cpp \
+    sources/cr_class_set.cpp
 
 RESOURCES += \
     ../resources/icon-sources.qrc
