@@ -9,12 +9,12 @@ TEMPLATE = app
 HEADERS += \
     headers/cr_mainwindow.h \
     headers/cr_hash.h \
-    headers/cr_class_set.h
+    headers/cr_paintSpace.h
 
 SOURCES += \
     sources/cr_mainwindow.cpp \
     sources/cr_main.cpp \
-    sources/cr_class_set.cpp
+    sources/cr_paintSpace.cpp
 
 RESOURCES += \
     ../resources/icon-sources.qrc

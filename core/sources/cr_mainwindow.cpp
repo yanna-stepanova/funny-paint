@@ -18,11 +18,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::mousePressEvent(QMouseEvent *_event)
 {
-    _event->accept();
+
     if ( _event->buttons() & Qt::LeftButton )
     {
-       // m_currentPoint = _event->pos();
-        m_setPoints.setPoint(_event->pos());
+         _event->accept();
+        m_paintSpace.setPoint(_event->pos());
+
         update();
     }
 }
@@ -34,22 +35,16 @@ void MainWindow::mouseMoveEvent(QMouseEvent *_event)
     if ( _event->buttons() & Qt::LeftButton )
     {
         _event->accept();
-        m_setPoints.setPoint(_event->pos());
+        m_paintSpace.setLine(_event->pos());
         update();
     }
 }
 
-/*void MainWindow::setPoint(const QPoint &_point)
-{
-    if (!m_points.contains(_point))
-        m_points.insert(_point);
-}*/
-
-
 void MainWindow::paintEvent(QPaintEvent * /* event*/)
 {
     QPainter m_painter(this);
-    m_setPoints.draw(&m_painter);
+    m_paintSpace.draw(m_painter);
+
 }
 
 
