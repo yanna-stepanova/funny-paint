@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include "headers/cr_class_set.h"
+#include "headers/cr_paintSpace.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +26,7 @@ protected:
 
 private:
     Ui::MainWindow *m_ui;
-    SetPoints m_setPoints;
+    PaintSpace m_paintSpace;
 };
 
 #endif // MAINWINDOW_H
