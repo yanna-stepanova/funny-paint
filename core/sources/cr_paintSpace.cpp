@@ -1,4 +1,5 @@
 #include "headers/cr_paintSpace.h"
+#include <iostream>
 
 PaintSpace::PaintSpace()
     : m_currentPoint (-1, -1)
@@ -19,26 +20,84 @@ void PaintSpace::setPoint(const QPoint &_point)
 
 void PaintSpace::setLine(const QPoint &_point)
 {
+    m_points.insert(m_currentPoint);//?
     int x = m_currentPoint.x();
+    int x2 = _point.x();
     int y = m_currentPoint.y();
-    int deltaX = _point.x() - m_currentPoint.x() ;
-    int deltaY = _point.y() - m_currentPoint.y();
-    int d = 2 * deltaY - deltaX;
-    int d1 = 2 * deltaY;
-    int d2 = 2 *(deltaY - deltaX);
-    m_points.insert(QPoint (x,y));//m_currentPoint
-    for (x += 1; x <= _point.x(); ++x)
+    int y2 = _point.y();
+    if ( y > y2 )
     {
-        m_points.insert(QPoint(x,y));
-        if (d <0)
-            d += d1;
+        std::swap(y,y2);
+        std::swap(x,x2);
+      //  std::cout << "It's SWAP" << std::endl;
+    }
+    int deltaX = x2 - x;
+    int deltaY = y2 - y;
+    if(deltaX > 0)//left to right
+    {
+        if(deltaX>deltaY)
+            func1(x, y, deltaX, deltaY, 1);
+        else
+           func2(x, y, deltaX, deltaY, 1);
+    }
+    else // right to left
+    {
+        deltaX = -deltaX;
+        if(deltaX > deltaY)
+            func1(x, y, deltaX, deltaY, -1);
+        else
+          func2(x, y, deltaX, deltaY, -1);
+    }
+
+    m_currentPoint = _point;
+}
+
+void PaintSpace::func1(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
+{
+    //_xDirection - направление движения
+    int errorPoint = 2*_deltaY - _deltaX;
+    int d1 = 2*_deltaY;
+    int d2 = 2*(_deltaY - _deltaX);
+    m_points.insert(QPoint(_x, _y));//?
+    while( --_deltaX )
+    {
+        if(errorPoint >= 0)
+        {
+            ++_y;
+            errorPoint += d2;
+        }
         else
         {
-            d += d2;
-            ++y;
+            errorPoint += d1;
         }
+        _x += _xDirection;
+        m_points.insert(QPoint(_x, _y));
     }
-    m_currentPoint = _point;
+ std::cout << "It's func1" << std::endl;
+}
+
+void PaintSpace::func2(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
+{
+    //_xDirection - направление движения
+    int errorPoint = _deltaX - 2*_deltaY;
+    int d1 = 2*_deltaX;
+    int d2 = 2*(_deltaX - _deltaY);
+    m_points.insert(QPoint(_x, _y));//?
+    while( --_deltaY )
+    {
+        if(errorPoint >= 0)
+        {
+           _x +=_xDirection;
+           errorPoint += d2;
+        }
+        else
+        {
+            errorPoint += d1;
+
+        }
+        ++_y;
+        m_points.insert(QPoint(_x, _y));
+    }
 }
 
 void PaintSpace::draw(QPainter &_painter)
