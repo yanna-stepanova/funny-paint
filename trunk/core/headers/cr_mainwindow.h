@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "headers/cr_paintSpace.h"
+#include "headers/cr_paint_space.h"
 
 namespace Ui {
 class MainWindow;

@@ -1,4 +1,4 @@
-#include "headers/cr_paintSpace.h"
+#include "headers/cr_paint_space.h"
 #include <iostream>
 
 PaintSpace::PaintSpace()
@@ -20,7 +20,7 @@ void PaintSpace::setPoint(const QPoint &_point)
 
 void PaintSpace::setLine(const QPoint &_point)
 {
-    m_points.insert(m_currentPoint);//?
+    m_points.insert(m_currentPoint);
     int x = m_currentPoint.x();
     int x2 = _point.x();
     int y = m_currentPoint.y();
@@ -28,31 +28,29 @@ void PaintSpace::setLine(const QPoint &_point)
     if ( y > y2 )
     {
         std::swap(y,y2);
-        std::swap(x,x2);
-      //  std::cout << "It's SWAP" << std::endl;
+        std::swap(x,x2);       
     }
     int deltaX = x2 - x;
     int deltaY = y2 - y;
-    if(deltaX > 0)//left to right
+    if( deltaX > 0 )//left to right
     {
-        if(deltaX>deltaY)
-            func1(x, y, deltaX, deltaY, 1);
+        if( deltaX>deltaY )
+            stepX(x, y, deltaX, deltaY, 1);
         else
-           func2(x, y, deltaX, deltaY, 1);
+            stepY(x, y, deltaX, deltaY, 1);
     }
     else // right to left
     {
         deltaX = -deltaX;
-        if(deltaX > deltaY)
-            func1(x, y, deltaX, deltaY, -1);
+        if( deltaX > deltaY )
+            stepX(x, y, deltaX, deltaY, -1);
         else
-          func2(x, y, deltaX, deltaY, -1);
+            stepY(x, y, deltaX, deltaY, -1);
     }
-
     m_currentPoint = _point;
 }
 
-void PaintSpace::func1(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
+void PaintSpace::stepX(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
 {
     //_xDirection - направление движения
     int errorPoint = 2*_deltaY - _deltaX;
@@ -72,28 +70,26 @@ void PaintSpace::func1(int _x, int _y, int _deltaX, int _deltaY, int _xDirection
         }
         _x += _xDirection;
         m_points.insert(QPoint(_x, _y));
-    }
- std::cout << "It's func1" << std::endl;
+    }   
 }
 
-void PaintSpace::func2(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
+void PaintSpace::stepY(int _x, int _y, int _deltaX, int _deltaY, int _xDirection)
 {
     //_xDirection - направление движения
     int errorPoint = _deltaX - 2*_deltaY;
     int d1 = 2*_deltaX;
     int d2 = 2*(_deltaX - _deltaY);
-    m_points.insert(QPoint(_x, _y));//?
+    m_points.insert(QPoint(_x, _y));
     while( --_deltaY )
     {
         if(errorPoint >= 0)
         {
-           _x +=_xDirection;
-           errorPoint += d2;
+            _x +=_xDirection;
+            errorPoint += d2;
         }
         else
         {
             errorPoint += d1;
-
         }
         ++_y;
         m_points.insert(QPoint(_x, _y));

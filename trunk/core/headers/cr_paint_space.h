@@ -14,8 +14,8 @@ public:
     void setPoint(const QPoint &_point);
     void setLine(const QPoint &_point);
     void draw(QPainter &_painter);
-    void func1(int _x, int _y, int _deltaX, int _deltaY, int _xDirection);
-    void func2(int _x, int _y, int _deltaX, int _deltaY, int _xDirection);
+    void stepX(int _x, int _y, int _deltaX, int _deltaY, int _xDirection);
+    void stepY(int _x, int _y, int _deltaX, int _deltaY, int _xDirection);
 
 private:
     typedef
