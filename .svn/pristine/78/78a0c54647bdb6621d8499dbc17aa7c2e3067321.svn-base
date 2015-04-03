@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QGraphicsView" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>816</width>
-    <height>625</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
- </widget>
- <resources/>
- <connections/>
-</ui>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
@@ -50,4 +29,3 @@
  <resources/>
  <connections/>
 </ui>
->>>>>>> f597d05907c73b3f8c7fd2bf9a965464802a01ab
