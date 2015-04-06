@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "headers/cr_mainwindow.h"
 #include "ui_cr_mainwindow.h"
 
@@ -8,14 +7,9 @@ MainWindow::MainWindow()
     :   m_ui(new Ui::MainWindow)
 {
     m_ui->setupUi(this);
-    m_scene = new QGraphicsScene;
+    m_scene = new QGraphicsScene(this);
     setScene(m_scene);
-    lineItem_ = new QGraphicsLineItem(0,0, 250,250);
-//    m_point = new PointItem;
-  //  m_scene->addItem(m_point);
 
-  //  PaintScene *itemPoint = new PointItem ();
-    //m_scene->addItem(itemPoint);
 
 }
 
@@ -25,34 +19,47 @@ MainWindow::~MainWindow()
 }
 
 
- void MainWindow::mousePressEvent(QMouseEvent *_event)
+void MainWindow::mousePressEvent(QMouseEvent *_event)
 {
 
-    if ( _event->buttons() & Qt::LeftButton )
+    if ( _event->button() == Qt::LeftButton )
     {
-         _event->accept();
-        m_point = new PointItem;
-        m_point->setPos(_event->pos());
+        _event->accept();
+
+        m_point = new PointItem ();
+        m_point->setPos(this->mapToScene( this->mapFromGlobal(_event->globalPos())));// преобразовываем координаты в систему вида
         m_scene->addItem(m_point);
-       // m_paintSpace.setPoint(_event->pos());
+        m_line = new QGraphicsLineItem();
+        m_scene->addLine( QLineF(m_point->getPoint(), m_point->getPoint()), QPen (Qt::black,6) );
+
+
 
         update();
+
+
     }
+
 }
-/*
+
 void MainWindow::mouseMoveEvent(QMouseEvent *_event)
 {
-    //просчитать все точки между m_current  и _event.pos() и записать их в set
-
     if ( _event->buttons() & Qt::LeftButton )
     {
         _event->accept();
-        m_paintSpace.setLine(_event->pos());
+        m_line = new QGraphicsLineItem();
+
+        m_scene->addLine( QLineF(m_point->getPoint(),this->mapToScene( this->mapFromGlobal(_event->globalPos()) ) ), QPen (Qt::blue,6) );
+        m_point->setPos(this->mapToScene( this->mapFromGlobal(_event->globalPos())));
         update();
     }
 }
 
-void MainWindow::paintEvent(QPaintEvent * /* event*/  /*)
+void MainWindow::mouseReleaseEvent(QMouseEvent *_event)
+{
+
+}
+
+/*void MainWindow::paintEvent(QPaintEvent * /* event*/  /*)
 {
     QPainter m_painter(this);
     m_paintSpace.draw(m_painter);
@@ -61,56 +68,3 @@ void MainWindow::paintEvent(QPaintEvent * /* event*/  /*)
 
 */
 
-=======
-#include "headers/cr_mainwindow.h"
-#include "ui_cr_mainwindow.h"
-#include <QMouseEvent>
-
-
-MainWindow::MainWindow(QWidget *_parent)
-    : QMainWindow(_parent)
-    , m_ui(new Ui::MainWindow)   
-{
-    m_ui->setupUi(this);
-
-}
-
-MainWindow::~MainWindow()
-{
-    delete m_ui;
-}
-
-void MainWindow::mousePressEvent(QMouseEvent *_event)
-{
-
-    if ( _event->buttons() & Qt::LeftButton )
-    {
-         _event->accept();
-        m_paintSpace.setPoint(_event->pos());
-
-        update();
-    }
-}
-
-void MainWindow::mouseMoveEvent(QMouseEvent *_event)
-{
-    //просчитать все точки между m_current  и _event.pos() и записать их в set
-
-    if ( _event->buttons() & Qt::LeftButton )
-    {
-        _event->accept();
-        m_paintSpace.setLine(_event->pos());
-        update();
-    }
-}
-
-void MainWindow::paintEvent(QPaintEvent * /* event*/)
-{
-    QPainter m_painter(this);
-    m_paintSpace.draw(m_painter);
-
-}
-
-
-
->>>>>>> f597d05907c73b3f8c7fd2bf9a965464802a01ab

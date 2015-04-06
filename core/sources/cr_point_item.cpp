@@ -3,7 +3,7 @@
 
 
 
-PointItem::PointItem()
+PointItem::PointItem()    
 {
 
 }
@@ -17,25 +17,23 @@ QRectF PointItem::boundingRect() const
 
 void PointItem::paint(QPainter *_painter, const QStyleOptionGraphicsItem *_option, QWidget *_widget)
 {
-    _painter->save();
-    _painter->setPen(QPen(Qt::red, 5, Qt::SolidLine));
+
+    _painter->setPen(QPen(Qt::red, 8, Qt::SolidLine));
     _painter->setBrush(this->brush());
-    _painter->drawPoint(this->pos()); // рисуем в координатах, относительных для объекта. т.е. не в абсолютных
-    _painter->restore();
+    _painter->drawPoint(current_point);
+
+
 }
 
-void PointItem::mousePressEvent(QGraphicsSceneMouseEvent *_event)
+void PointItem::setPos(const QPointF &_pos)
 {
-/*    if ( _event->buttons() & Qt::LeftButton )
-    {
-        _event->accept();
-
-        //setPoint(_event->pos());
-        update();
-    }*/
+    current_point = _pos;
 }
 
-void PointItem::mouseMoveEvent(QGraphicsSceneMouseEvent *_event)
+QPointF PointItem::getPoint()
 {
-
+    return current_point;
 }
+
+
+

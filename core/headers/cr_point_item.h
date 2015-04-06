@@ -8,12 +8,12 @@ class PointItem : public QAbstractGraphicsShapeItem
 {
 public:
     PointItem();
-    /*virtual*/ QRectF boundingRect() const; // возвращает прямоугольную область, в кот. вписывается точка
-
-    /*virtual*/void paint(QPainter *_painter, const QStyleOptionGraphicsItem *_option, QWidget *_widget);
-protected:
-    /*virtual*/void mousePressEvent(QGraphicsSceneMouseEvent *_event);
-    /*virtual*/void mouseMoveEvent(QGraphicsSceneMouseEvent *_event);
+   /*virtual*/ QRectF boundingRect() const; // возвращает прямоугольную область, в кот. вписывается точка
+   /*virtual*/void paint(QPainter *_painter, const QStyleOptionGraphicsItem *_option, QWidget *_widget);
+    void setPos(const QPointF &_pos);
+    QPointF getPoint();
+private:
+    QPointF current_point;
 };
 
 #endif // CR_POINT_ITEM_H
