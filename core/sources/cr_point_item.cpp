@@ -15,14 +15,11 @@ QRectF PointItem::boundingRect() const
                     penHalfWidth, penHalfWidth);
 }
 
-void PointItem::paint(QPainter *_painter, const QStyleOptionGraphicsItem *_option, QWidget *_widget)
+void PointItem::paint(QPainter *_painter, const QStyleOptionGraphicsItem */*_option*/, QWidget */*_widget*/)
 {
-
-    _painter->setPen(QPen(Qt::red, 8, Qt::SolidLine));
+    _painter->setPen(QPen(Qt::blue, 5, Qt::SolidLine));
     _painter->setBrush(this->brush());
     _painter->drawPoint(current_point);
-
-
 }
 
 void PointItem::setPos(const QPointF &_pos)

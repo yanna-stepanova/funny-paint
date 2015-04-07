@@ -9,7 +9,7 @@
 #include <QGraphicsItem>
 
 #include "headers/cr_point_item.h"
-#include "headers/cr_paint_space.h"
+
 
 
 namespace Ui {
@@ -30,17 +30,13 @@ public slots:
 protected:
     /*virtual*/ void mousePressEvent(QMouseEvent *_event);
     /*virtual*/ void mouseMoveEvent(QMouseEvent *_event);
-    /*virtual*/ void mouseReleaseEvent(QMouseEvent *_event);
-//    /*virtual*/ void paintEvent(QPaintEvent * /*event*/);
+
 
 private:
     Ui::MainWindow *m_ui;
     QGraphicsScene *m_scene;
     QGraphicsLineItem *m_line;   
     PointItem *m_point;
-
-
-    PaintSpace m_paintSpace;
 };
 
 #endif // MAINWINDOW_H

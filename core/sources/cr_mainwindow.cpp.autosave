@@ -37,7 +37,6 @@ void MainWindow::mouseMoveEvent(QMouseEvent *_event)
     {
         _event->accept();
         m_line = new QGraphicsLineItem();
-
         m_scene->addLine( QLineF(m_point->getPoint(),this->mapToScene( this->mapFromGlobal(_event->globalPos()) ) ), QPen (Qt::blue,5) );
         m_point->setPos(this->mapToScene( this->mapFromGlobal(_event->globalPos())));
         m_scene->update();
