@@ -1,16 +1,11 @@
 #include "headers/cr_mainwindow.h"
 #include "ui_cr_mainwindow.h"
 
-
-
-MainWindow::MainWindow()
-    :   m_ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent)
+    :   QFrame(parent)
+      , m_ui(new Ui::MainWindow)
 {
     m_ui->setupUi(this);
-    m_scene = new QGraphicsScene(this);
-    setScene(m_scene);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -18,31 +13,19 @@ MainWindow::~MainWindow()
     delete m_ui;
 }
 
-
-void MainWindow::mousePressEvent(QMouseEvent *_event)
+void MainWindow::on_pbClear_clicked()
 {
-    if ( _event->button() == Qt::LeftButton )
-    {
-        _event->accept();
-        m_point = new PointItem ();
-        m_point->setPos(this->mapToScene( this->mapFromGlobal(_event->globalPos())));// преобразовываем координаты в систему вида
-        m_scene->addItem(m_point);
-        m_scene->update();
-    }
+    m_singleton->getInstance()->getScene()->clear();
+    m_singleton->getInstance()->getScene()->update();
 }
 
-void MainWindow::mouseMoveEvent(QMouseEvent *_event)
+void MainWindow::on_pbStraightLine_clicked()
 {
-    if ( _event->buttons() & Qt::LeftButton )
-    {
-        _event->accept();
-        m_line = new QGraphicsLineItem();
 
-        m_scene->addLine( QLineF(m_point->getPoint(),this->mapToScene( this->mapFromGlobal(_event->globalPos()) ) ), QPen (Qt::blue,5) );
-        m_point->setPos(this->mapToScene( this->mapFromGlobal(_event->globalPos())));
-        m_scene->update();
-    }
+
 }
 
+void MainWindow::on_pbPencil_clicked()
+{
 
-
+}

@@ -12,6 +12,7 @@ public:
    /*virtual*/void paint(QPainter *_painter, const QStyleOptionGraphicsItem */*_option*/, QWidget *_/*widget*/);
     void setPos(const QPointF &_pos);
     QPointF getPoint();
+
 private:
     QPointF current_point;
 };

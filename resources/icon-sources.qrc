@@ -1,2 +1,8 @@
-<RCC/>
-
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="clean">clear.ico</file>
+        <file>Applications (1).ico</file>
+        <file>edit.ico</file>
+        <file>icon-sources.qrc</file>
+    </qresource>
+</RCC>

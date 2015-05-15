@@ -1,8 +1,5 @@
 #include "headers/cr_point_item.h"
 
-
-
-
 PointItem::PointItem()    
 {
 

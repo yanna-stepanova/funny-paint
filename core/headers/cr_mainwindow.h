@@ -1,26 +1,18 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QGraphicsView>
-#include <QMouseEvent>
-
-#include <QGraphicsScene>
-#include <QGraphicsLineItem>
-#include <QGraphicsItem>
-
-#include "headers/cr_point_item.h"
-
-
+#include <QFrame>
+#include "headers/cr_singleton.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QGraphicsView
+class MainWindow : public QFrame
 {
     Q_OBJECT
 public:
-    explicit MainWindow();
+    explicit MainWindow(QWidget *parent = 0);
     virtual ~MainWindow();
 
 signals:
@@ -28,15 +20,20 @@ signals:
 public slots:
 
 protected:
-    /*virtual*/ void mousePressEvent(QMouseEvent *_event);
-    /*virtual*/ void mouseMoveEvent(QMouseEvent *_event);
 
+
+
+private slots:
+
+    void on_pbClear_clicked();
+
+    void on_pbStraightLine_clicked();
+
+    void on_pbPencil_clicked();
 
 private:
     Ui::MainWindow *m_ui;
-    QGraphicsScene *m_scene;
-    QGraphicsLineItem *m_line;   
-    PointItem *m_point;
+    Singleton* m_singleton;
 };
 
 #endif // MAINWINDOW_H
